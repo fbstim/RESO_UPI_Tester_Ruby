@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Cody Gustafson"]
   spec.email         = ["cody.k.gustafson@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Validator for the RESO UPI.}
+  spec.description   = %q{Validator for the RESO UPI.}
+  spec.homepage      = "https://github.com/fbstim/RESO_UPI_Tester_Ruby"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
