@@ -5,7 +5,33 @@ class RESOUPITesterRubyTest < Minitest::Test
     refute_nil ::RESOUPITesterRuby::VERSION
   end
 
-  def test_it_does_something_useful
-    assert false
+  def test_basic_functions
+    good_upis = [
+        "US-04015-N-11022331-R-N",
+        "US-42049-49888-1213666-R-N",
+        "US-36061-N-010237502R1-R-N",
+        "US-36061-N-010237502R1-S-113",
+        "US-06075-N-40010333-T-10",
+        "US-13051-N-1122444-R-N",
+        "US-36061-N-0122213-S-118",
+        "US-04019-N-12401001H-B-65A",
+        "US-123331-N-N-99798987-99",
+    ];
+
+    bad_upis = [
+        "US-123331-N-87-99",
+        "XX-123331-N-N-99798987-99",
+        "OIOASPODASDO APOSAPSCAS" ,
+    ];
+
+    good_upis.each do |upi|
+    	t = RESOUPITesterRuby::UPI.new upi
+    	assert(t.is_valid)
+    end
+
+    bad_upis.each do |upi|
+    	t = RESOUPITesterRuby::UPI.new upi
+    	refute(t.is_valid) 
+    end
   end
 end
