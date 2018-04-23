@@ -1,4 +1,5 @@
 require "RESO_UPI_Tester_Ruby/version"
+require "csv"
 
 module RESOUPITesterRuby
 
@@ -14,12 +15,16 @@ module RESOUPITesterRuby
     @property_code
     @sub_property_code
     @is_valid = nil
+    @valid_codes = nil
 
     def initialize(upi = false)
       if (upi) 
         self.set_upi(upi)
         self.parse_upi
       end
+
+      @valid_codes = CSV.read(File.join(File.dirname(__FILE__), 'national_county.txt'))
+
     end
 
     def set_upi(upi)
@@ -39,6 +44,19 @@ module RESOUPITesterRuby
     end
 
     def set_country_code(country_code)
+        is_valid_code = false
+
+        # for now just US and Canada
+        if country_code == 'US'
+           is_valid_code = true
+        elsif country_code == 'CA'
+           is_valid_code = true
+        end
+
+        if !is_valid_code
+            @is_valid = false
+        end
+
     	@country_code = country_code
     end
 
