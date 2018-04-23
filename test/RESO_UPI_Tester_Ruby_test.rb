@@ -26,12 +26,12 @@ class RESOUPITesterRubyTest < Minitest::Test
 
     good_upis.each do |upi|
     	t = RESOUPITesterRuby::UPI.new upi
-    	assert(t.is_valid)
+    	assert(t.is_valid, upi)
     end
 
     bad_upis.each do |upi|
     	t = RESOUPITesterRuby::UPI.new upi
-    	refute(t.is_valid) 
+    	refute(t.is_valid, upi)
     end
   end
 end

@@ -4,16 +4,16 @@ module RESOUPITesterRuby
 
   class UPI
 
-    @@upi
-    @@country_name
-    @@country_code
-    @@sub_country_name
-    @@sub_country_code
-    @@sub_county_code
-    @@property_id
-    @@property_code
-    @@sub_property_code
-    @@is_valid = nil
+    @upi
+    @country_name
+    @country_code
+    @sub_country_name
+    @sub_country_code
+    @sub_county_code
+    @property_id
+    @property_code
+    @sub_property_code
+    @is_valid = nil
 
     def initialize(upi = false)
       if (upi) 
@@ -23,89 +23,89 @@ module RESOUPITesterRuby
     end
 
     def set_upi(upi)
-    	@@upi = upi
+    	@upi = upi
     end
 
     def get_country_name
-    	@@country_name
+    	@country_name
     end
 
     def set_country_name(country_name)
-    	@@country_name = country_name
+    	@country_name = country_name
     end
 
     def get_country_code
-    	@@country_code
+    	@country_code
     end
 
     def set_country_code(country_code)
-    	@@country_code = country_code
+    	@country_code = country_code
     end
 
     def get_sub_country_name
-    	@@sub_country_name
+    	@sub_country_name
     end
 
     def set_sub_country_name(sub_country_name)
-    	@@sub_country_name = sub_country_name
+    	@sub_country_name = sub_country_name
     end
 
     def get_sub_country_code
-    	@@sub_country_code
+    	@sub_country_code
     end
 
     def set_sub_country_code(sub_country_code)
-    	@@sub_country_code = sub_country_code
+    	@sub_country_code = sub_country_code
     end
 
     def get_sub_county_code
-    	@@sub_county_code
+    	@sub_county_code
     end
 
     def set_sub_county_code(sub_county_code)
-    	@@sub_county_code = sub_county_code
+    	@sub_county_code = sub_county_code
     end
 
     def get_property_id
-    	@@property_id
+    	@property_id
     end
 
     def set_property_id(property_id)
-    	@@property_id = property_id
+    	@property_id = property_id
     end
 
     def get_property_code
-    	@@property_code
+    	@property_code
     end
 
     def set_property_code(property_code)
-    	@@property_code = property_code
+    	@property_code = property_code
     end
 
     def get_sub_property_code
-    	@@sub_property_code
+    	@sub_property_code
     end
 
     def set_sub_property_code(sub_property_code)
-    	@@sub_property_code = sub_property_code
+    	@sub_property_code = sub_property_code
     end
 
     def is_valid
-    	@@is_valid
+    	@is_valid
     end
 
     def set_is_valid(is_valid)
-    	@@is_valid = is_valid
+    	@is_valid = is_valid
     end
 
     def to_upi
       data = [
-          @@country_code,
-          @@sub_country_code,
-          @@sub_county_code,
-          @@property_id,
-          @@property_code,
-          @@sub_property_code,
+          @country_code,
+          @sub_country_code,
+          @sub_county_code,
+          @property_id,
+          @property_code,
+          @sub_property_code,
       ]
 
       self.class.set_upi(data.join("-"))
@@ -113,11 +113,11 @@ module RESOUPITesterRuby
       # parse the new UPI so we can have a check for validity
       self.class.parse_upi
 
-      @@upi
+      @upi
     end
 
     def parse_upi
-    	parts = @@upi.split('-')
+    	parts = @upi.split('-')
 
       if parts.count < 6 
         self.set_is_valid(false)
@@ -130,7 +130,7 @@ module RESOUPITesterRuby
           self.set_sub_property_code(parts[5]) # N, (int) unit number, lot number, or building ID number
 
           # if we still haven't set is_valid to false, set it to true
-          if @@is_valid.nil?
+          if @is_valid.nil?
               self.set_is_valid(true)
           end
       end
