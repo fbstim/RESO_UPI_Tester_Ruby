@@ -6,8 +6,8 @@ require 'RESO_UPI_Tester_Ruby/version'
 Gem::Specification.new do |spec|
   spec.name          = "RESO_UPI_Tester_Ruby"
   spec.version       = RESOUPITesterRuby::VERSION
-  spec.authors       = ["Cody Gustafson"]
-  spec.email         = ["cody.k.gustafson@gmail.com"]
+  spec.authors       = ["Tim Kramer"]
+  spec.email         = ["tim@thethinkery.net"]
 
   spec.summary       = %q{Validator for the RESO UPI.}
   spec.description   = %q{Validator for the RESO UPI.}
