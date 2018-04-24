@@ -34,4 +34,17 @@ class RESOUPITesterRubyTest < Minitest::Test
     	refute(t.is_valid, upi)
     end
   end
+
+  def test_state_code
+    t = RESOUPITesterRuby::UPI.new
+    t.set_sub_country_name('AL')
+    assert_equal(t.get_sub_country_code, "01")
+  end
+
+  def test_county_code
+    t = RESOUPITesterRuby::UPI.new
+    t.set_sub_country_name('AL')
+    t.set_sub_county_name('Autauga County')
+    assert_equal(t.get_sub_county_code, "001")
+  end
 end

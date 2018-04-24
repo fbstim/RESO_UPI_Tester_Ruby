@@ -10,6 +10,7 @@ module RESOUPITesterRuby
     @country_code
     @sub_country_name
     @sub_country_code
+    @sub_county_name
     @sub_county_code
     @property_id
     @property_code
@@ -65,7 +66,12 @@ module RESOUPITesterRuby
     end
 
     def set_sub_country_name(sub_country_name)
-    	@sub_country_name = sub_country_name
+      @valid_codes.each do |i|
+        if i[0] == sub_country_name
+          set_sub_country_code(i[1])
+          @sub_country_name = sub_country_name
+        end
+      end
     end
 
     def get_sub_country_code
@@ -82,6 +88,19 @@ module RESOUPITesterRuby
 
     def set_sub_county_code(sub_county_code)
     	@sub_county_code = sub_county_code
+    end
+
+    def get_sub_county_name
+    	@sub_county_code
+    end
+
+    def set_sub_county_name(sub_county_name)
+      @valid_codes.each do |i|
+        if i[3] == sub_county_name and i[1] == get_sub_country_code
+          set_sub_county_code(i[2])
+          @sub_county_name = sub_county_name
+        end
+      end
     end
 
     def get_property_id
